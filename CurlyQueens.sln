@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurlyQueens", "CurlyQueens\CurlyQueens.csproj", "{7481CF52-011D-4225-B326-CAB5B0EA6834}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7481CF52-011D-4225-B326-CAB5B0EA6834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7481CF52-011D-4225-B326-CAB5B0EA6834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7481CF52-011D-4225-B326-CAB5B0EA6834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7481CF52-011D-4225-B326-CAB5B0EA6834}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A21A2E39-1B80-43F1-9D1A-72BFE7739FBC}
+	EndGlobalSection
+EndGlobal
