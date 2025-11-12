@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CurlyQueens.ViewModel.ProductViewModel>
+
+@{
+    ViewData["Title"] = "Our Curly Products";
+    Layout = "_Layout";
+}
+
+<div class="container py-5">
+    <h2 class="text-center mb-4" style="color:#800020;">Curly Queens Collection</h2>
+
+    <form asp-action="Search" method="get" class="d-flex justify-content-center mb-4">
+        <input type="text" name="term" class="form-control w-50 rounded-start" placeholder="Search curly products..." />
+        <button type="submit" class="btn text-white rounded-end" style="background-color:#800020;">Search</button>
+    </form>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0" style="border-radius:20px;">
+                    <img src="@item.ImageUrl" class="card-img-top" alt="@item.ProductName" style="height:250px;object-fit:cover;border-top-left-radius:20px;border-top-right-radius:20px;" />
+                    <div class="card-body text-center" style="background-color:#f2f2f2;">
+                        <h5 class="card-title" style="color:#800020;">@item.ProductName</h5>
+                        <p class="text-muted">@item.Description</p>
+                        <p><strong>@item.Price.ToString("C")</strong></p>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn text-white" style="background-color:#d4af37;">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

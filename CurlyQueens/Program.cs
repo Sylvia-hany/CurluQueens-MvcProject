@@ -1,4 +1,7 @@
 using CurlyQueens.Data;
+using CurlyQueens.Mapping;
+using CurlyQueens.Repository;
+using CurlyQueens.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +12,13 @@ namespace CurlyQueens
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            // Auto Mapper Configurations
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+            // Repository
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            // Service
+            builder.Services.AddScoped<IProductService, ProductService>();
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 

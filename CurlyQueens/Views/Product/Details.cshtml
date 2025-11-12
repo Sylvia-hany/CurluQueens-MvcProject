@@ -1,0 +1,21 @@
+﻿@model CurlyQueens.ViewModel.ProductViewModel
+
+@{
+    ViewData["Title"] = "Product Details";
+    Layout = "_Layout";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <img src="@Model.ImageUrl" alt="@Model.ProductName" class="img-fluid rounded shadow mb-3" style="max-height:400px;object-fit:cover;" />
+            <h2 style="color:#800020;">@Model.ProductName</h2>
+            <p class="lead">@Model.Description</p>
+            <h4 style="color:#d4af37;">Price: @Model.Price.ToString("C")</h4>
+            <p><strong>Category:</strong> @Model.CategoryName</p>
+            @* <p><strong>Available Stock:</strong> @Model.StockQuantity</p> *@
+
+            <a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>
+        </div>
+    </div>
+</div>
