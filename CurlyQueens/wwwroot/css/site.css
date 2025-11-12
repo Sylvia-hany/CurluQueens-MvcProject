@@ -37,6 +37,7 @@ a:hover {
     color: var(--bg);
     padding: 3rem 0;
     font-size: 0.9rem;
+    text-align: center; 
 }
 
 .footer h5 {
@@ -55,7 +56,8 @@ a:hover {
 
 .footer .social-icons a {
     font-size: 1.5rem;
-    margin-right: 1rem;
+   /* margin-right: 1rem;*/
+ 
 }
 
 /* 3. Navbar */
@@ -503,5 +505,145 @@ a {
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
 }
 
-=======
->>>>>>> main
+======= > > > > > > > main
+/* --- Animations --- */
+@keyframes fadeInDown {
+    from
+
+{
+    opacity: 0;
+    transform: translateY(-20px );
+}
+
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    background: linear-gradient(180deg, #fff1f4 0%, #f8f8f8 100%);
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: transparent; /* Start transparent */
+    padding: 15px 0;
+    transition: background-color 0.5s ease-in-out, padding 0.5s ease-in-out;
+    animation: fadeInDown 0.8s 0.2s ease-in-out backwards;
+}
+
+    .navbar.scrolled {
+        background-color: var(--burgundy); /* Solid on scroll */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 10px 0;
+    }
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.7rem;
+    color: #800020 !important;
+    letter-spacing: 1px;
+    transition: color 0.4s ease-in-out;
+}
+
+.navbar.scrolled .navbar-brand {
+    color: #d4af37 !important;
+}
+
+.nav-link {
+    color: #555 !important; /* Darker text for better readability */
+    font-weight: 500;
+    margin: 0 10px;
+    position: relative;
+    transition: color 0.4s ease-in-out;
+}
+
+.navbar.scrolled .nav-link {
+    color: white !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #d4af37;
+    transition: width 0.4s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #800020 !important;
+}
+
+.navbar.scrolled .nav-link:hover {
+    color: #d4af37 !important;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* --- Main content --- */
+main {
+    min-height: 75vh;
+    padding: 60px 0;
+    animation: fadeInUp 1s 0.4s ease-in-out backwards;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--burgundy);
+    color: var(--burgundy);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+    footer a {
+        color: #d4af37;
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+    }
+
+        footer a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+/* --- Buttons --- */
+.btn-curly {
+    background-color: #800020;
+    color: white;
+    border: 2px solid #800020;
+    border-radius: 50px; /* Modern rounded button */
+    padding: 10px 25px;
+    font-weight: 500;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 4px 15px rgba(128, 0, 32, 0.2);
+}
+
+    .btn-curly:hover {
+        background-color: #a30c3b;
+        border-color: #a30c3b;
+        transform: translateY(-3px); /* Add a subtle lift effect */
+        box-shadow: 0 6px 20px rgba(128, 0, 32, 0.3);
+    }
