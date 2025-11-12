@@ -5,26 +5,20 @@
 }
 
 <style>
-    .background-img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* cover أو contain حسب رغبتك */
-        z-index: 0;
-    }
     .auth-wrapper {
-        min-height: 100vh; /* تغطي كامل الصفحة */
-        width:100%;
+        min-height: 100vh; /* يغطي كامل الصفحة */
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-      
         position: relative;
+
+        /* الخلفية مباشرة */
+        background: url('/Images/image.webp') no-repeat center center;
+        background-size: cover;
     }
 
-    /* Optional: overlay شفاف لتوضيح النص */
+    /* overlay شفاف */
     .auth-wrapper::before {
         content: "";
         position: absolute;
@@ -53,7 +47,6 @@
 </style>
 
 <div class="auth-wrapper">
-    <img src="/Images/image.webp" class="background-img" />
     <div class="auth-card">
         <h2 class="text-center mb-3" style="color:#7a1620">Login</h2>
         <form asp-action="Login" method="post">
