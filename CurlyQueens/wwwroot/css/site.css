@@ -1,22 +1,251 @@
-html {
-  font-size: 14px;
+:root {
+    --burgundy: #6B0F1A;
+    --charcoal: #2E2E33;
+    --bg: #F5F5F6;
+    --accent: #C9A66B;
+    --muted: #9CA3AF;
+    --white: #FFFFFF;
+    --font-family-sans: "Inter", system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* 1. Base & Typography */
 body {
-  margin-bottom: 60px;
+    background-color: var(--bg);
+    font-family: var(--font-family-sans);
+    color: var(--charcoal);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--burgundy);
+}
+
+a {
+    color: var(--burgundy);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+/* 2. Layout & Components */
+.footer {
+    background-color: var(--charcoal);
+    color: var(--bg);
+    padding: 3rem 0;
+    font-size: 0.9rem;
+}
+
+.footer h5 {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.footer a {
+    color: var(--muted);
+}
+
+.footer a:hover {
+    color: var(--white);
+}
+
+.footer .social-icons a {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+/* 3. Navbar */
+.navbar-custom {
+    background-color: var(--white);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar-brand-custom {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--burgundy) !important;
+}
+
+.navbar-custom .nav-link {
+    color: var(--charcoal);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+    color: var(--burgundy);
+}
+
+#mini-cart-count {
+    background-color: var(--accent);
+    color: var(--charcoal);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2em 0.5em;
+    border-radius: 50%;
+    position: relative;
+    top: -8px;
+    left: -4px;
+}
+
+/* 4. Buttons */
+.btn-primary {
+    background-color: var(--burgundy);
+    border-color: var(--burgundy);
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #500b13; /* Darker burgundy */
+    border-color: #500b13;
+}
+
+.btn-accent {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--charcoal);
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.btn-accent:hover, .btn-accent:focus {
+    background-color: #b99556; /* Darker gold */
+    border-color: #b99556;
+    color: var(--charcoal);
+    transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+    border-color: var(--burgundy);
+    color: var(--burgundy);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--burgundy);
+    color: var(--white);
+}
+
+/* 5. Product Card */
+.product-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: var(--white);
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03), 0 2px 4px -1px rgba(0,0,0,0.03);
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+
+.product-card__image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.product-card__body {
+    padding: 1.25rem;
+}
+
+.product-card__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.product-card__price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--burgundy);
+    margin-bottom: 0.75rem;
+}
+
+.product-card__tags {
+    margin-bottom: 1rem;
+}
+
+.product-card__tag {
+    display: inline-block;
+    background-color: #e5e7eb;
+    color: #4b5563;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    margin-right: 0.5rem;
+}
+
+/* 6. Home Page */
+.hero-banner {
+    background: linear-gradient(rgba(46, 46, 51, 0.5), rgba(46, 46, 51, 0.5)), url('https://via.placeholder.com/1600x600.png/2E2E33/FFFFFF?text=CurlyQueens+Hero+Image') no-repeat center center;
+    background-size: cover;
+    color: var(--white);
+    padding: 8rem 0;
+    text-align: center;
+}
+
+.hero-banner h1 {
+    color: var(--white);
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.category-card {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07);
+}
+
+.category-card__icon {
+    font-size: 2.5rem; /* Placeholder for icon font */
+    color: var(--burgundy);
+    margin-bottom: 1rem;
+}
+
+.category-card__title {
+    font-weight: 600;
+    color: var(--charcoal);
+}
+
+/* 7. Admin */
+.admin-header {
+    background-color: var(--charcoal);
+    color: var(--white);
+}
+
+.admin-header .nav-link {
+    color: var(--muted);
+}
+
+.admin-header .nav-link.active,
+.admin-header .nav-link:hover {
+    color: var(--white);
+}
+
+.stat-card {
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
 }

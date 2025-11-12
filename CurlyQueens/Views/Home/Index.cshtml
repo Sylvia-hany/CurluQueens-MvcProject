@@ -2,7 +2,189 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- 🌸 Custom Styles for a more aesthetic and vibrant look -->
+<style>
+    body {
+        background-color: #fff8f8;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .hero-banner {
+        position: relative;
+        background: linear-gradient(rgba(255, 192, 203, 0.6), rgba(255, 192, 203, 0.6)), url('/images/Curly2.jpg') center/cover no-repeat;
+        color: #4a2c2a;
+        padding: 100px 20px;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+        /* 🎀 COMMENT: حطي هنا اللينك بتاع صورة البنوته الكيرلي في wwwroot بدلاً من /images/curly-girl-bg.jpg */
+
+        .hero-banner h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .hero-banner p {
+            font-size: 1.25rem;
+            color: #5c3b3b;
+            margin-bottom: 1.5rem;
+        }
+
+    .btn-accent {
+        background-color: #ff6b81;
+        color: white;
+        border: none;
+        transition: 0.3s;
+    }
+
+        .btn-accent:hover {
+            background-color: #e85c74;
+            transform: scale(1.05);
+        }
+
+    /* 💖 Category Cards */
+    .category-card {
+        background-color: white;
+        text-align: center;
+        padding: 20px;
+        border-radius: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            background-color: #fff0f2;
+        }
+
+    .category-card__icon {
+        font-size: 2.5rem;
+        color: #ff6b81;
+        margin-bottom: 10px;
+    }
+
+    .category-card__title {
+        font-weight: 600;
+        color: #4a2c2a;
+    }
+
+    /* 🌷 Product Cards */
+    .product-card {
+        background-color: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+    .product-card__image {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+    }
+
+    .product-card__body {
+        padding: 15px;
+    }
+
+    .product-card__title {
+        font-weight: 600;
+        color: #4a2c2a;
+    }
+
+    .product-card__price {
+        color: #ff6b81;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .btn-outline-primary {
+        border-color: #ff6b81;
+        color: #ff6b81;
+    }
+
+        .btn-outline-primary:hover {
+            background-color: #ff6b81;
+            color: white;
+        }
+
+    .btn-primary {
+        background-color: #ff6b81;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #e85c74;
+        }
+
+    h2 {
+        color: #4a2c2a;
+        font-weight: 700;
+    }
+</style>
+
+<!-- 1. 🌸 Hero Banner Section -->
+<div class="hero-banner text-center mb-5">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Nourish Your Natural Curls</h1>
+        <p class="lead my-4">Discover products designed to celebrate and enhance your unique hair texture.</p>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-accent btn-lg shadow">Shop Curly Care</a>
+    </div>
+</div>
+
+<!-- 2. 🌼 Featured Categories Section -->
+<div class="container">
+    <h2 class="text-center mb-4">Shop by Category</h2>
+    <div class="row g-3">
+        @{
+            var categories = new[] { "Leave-in", "Gel", "Masks", "Devices", "Brushes", "Accessories", "Shampoo", "Scrubs" };
+        }
+
+        @foreach (var category in categories)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <a href="/Products?category=@category" class="text-decoration-none">
+                    <div class="category-card">
+                        <div class="category-card__icon">
+                            <i class="bi bi-droplet-fill"></i>
+                        </div>
+                        <div class="category-card__title">@category</div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- 3. 🌺 Featured Products Section -->
+<div class="container mt-5 pt-5">
+    <h2 class="text-center mb-4">Our Best Sellers</h2>
+    <div class="row g-4">
+        @for (int i = 0; i < 4; i++)
+        {
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x300.png/F5F5F6/6B0F1A?text=Product+Image"
+                         class="product-card__image" alt="Product Name">
+                    <div class="product-card__body text-center">
+                        <h5 class="product-card__title">Best Selling Product @(i + 1)</h5>
+                        <p class="product-card__price">$24.99</p>
+                        <div class="d-grid gap-2">
+                            <a asp-controller="Products" asp-action="Details" asp-route-id="@(i + 1)"
+                               class="btn btn-outline-primary btn-sm">Details</a>
+                            <button class="btn btn-primary btn-sm">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
