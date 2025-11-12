@@ -1,20 +1,17 @@
-<<<<<<< HEAD
+
 ﻿
 using AutoMapper;
-=======
+
 ﻿using AutoMapper;
->>>>>>> main
+
 using CurlyQueens.Models;
 using CurlyQueens.Services;
 using CurlyQueens.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-<<<<<<< HEAD
-=======
 using Microsoft.AspNetCore.Http;
 using System.IO;
->>>>>>> main
 
 namespace CurlyQueens.Controllers
 {
@@ -52,19 +49,10 @@ namespace CurlyQueens.Controllers
         public async Task<IActionResult> Search(string term)
         {
             var products = await _productService.SearchProductsAsync(term);
-<<<<<<< HEAD
             return View("Index",products);
         }
-
-        // GET: /Products/Create
-        [Authorize(Roles = "Admin")]
-=======
-            return View("Index", products);
-        }
-
         // GET: /Products/Create
         //[Authorize(Roles = "Admin")]
->>>>>>> main
         [HttpGet]
         public IActionResult Create()
         {
@@ -72,11 +60,7 @@ namespace CurlyQueens.Controllers
         }
 
         // POST: /Product/Create
-<<<<<<< HEAD
         [Authorize(Roles ="Admin")]
-=======
-       // [Authorize(Roles = "Admin")]
->>>>>>> main
         [HttpPost]
         public async Task<IActionResult> Create(ProductViewModel model, IFormFile ImageFile)
         {
@@ -107,11 +91,8 @@ namespace CurlyQueens.Controllers
         }
 
     }
-<<<<<<< HEAD
+
 }
 
 
 
-=======
-}
->>>>>>> main

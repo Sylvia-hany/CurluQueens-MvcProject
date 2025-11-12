@@ -1,12 +1,61 @@
 ﻿@model LoginViewModel 
 @{
-    ViewData["Title"] = "تسجيل الدخول";
+    ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="auth-wrapper d-flex justify-content-center align-items-center">
-    <div class="auth-card p-4">
-        <h2 class="text-center mb-3" style="color:#7a1620">تسجيل الدخول</h2>
+<style>
+    .background-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* cover أو contain حسب رغبتك */
+        z-index: 0;
+    }
+    .auth-wrapper {
+        min-height: 100vh; /* تغطي كامل الصفحة */
+        width:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        position: relative;
+    }
+
+    /* Optional: overlay شفاف لتوضيح النص */
+    .auth-wrapper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4); /* 40% شفاف أسود */
+        z-index: 0;
+    }
+
+    .auth-card {
+        position: relative;
+        z-index: 1; /* فوق overlay */
+        background-color: rgba(255,255,255,0.9);
+        border-radius: 15px;
+        padding: 2rem;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .auth-card h2 {
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+<div class="auth-wrapper">
+    <img src="/Images/image.webp" class="background-img" />
+    <div class="auth-card">
+        <h2 class="text-center mb-3" style="color:#7a1620">Login</h2>
         <form asp-action="Login" method="post">
             <div class="mb-3">
                 <label asp-for="UserName" class="form-label"></label>
@@ -19,8 +68,6 @@
                 <input asp-for="Password" class="form-control" />
                 <span class="text-danger"></span>
             </div>
-
-            
 
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary" style="background:#7a1620;border-color:#7a1620">Login</button>
