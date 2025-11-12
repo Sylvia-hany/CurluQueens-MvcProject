@@ -4,7 +4,6 @@ using CurlyQueens.Repository;
 using CurlyQueens.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-
 namespace CurlyQueens
 {
     public class Program
@@ -12,6 +11,7 @@ namespace CurlyQueens
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
             // Auto Mapper Configurations
             builder.Services.AddAutoMapper(typeof(MappingProfile));
 

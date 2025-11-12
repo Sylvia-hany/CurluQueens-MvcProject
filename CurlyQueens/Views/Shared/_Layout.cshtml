@@ -1,49 +1,106 @@
-﻿@*
-  Views/Shared/_Layout.cshtml
-  CurlyProducts - RTL layout with optional sections for Scripts and Styles
-*@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CurlyProducts - @ViewData["Title"]</title>
+﻿<title>@ViewData["Title"] - CurlyQueens</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
-    <!-- Bootstrap (LTR bundle still works; if you want full RTL support consider bootstrap-rtl or Bootstrap 5 RTL build) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body {
+            background-color: #f8f8f8;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    @* Optional per-view styles *@
-    @RenderSection("Styles", required: false)
+        /* Navbar */
+        .navbar {
+            background-color: #800020;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: #d4af37 !important;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+            .nav-link:hover {
+                color: #d4af37 !important;
+            }
+
+        /* Main content */
+        main {
+            min-height: 75vh;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #800020;
+            color: #f8f8f8;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9rem;
+        }
+
+            footer a {
+                color: #d4af37;
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                }
+
+        /* Buttons */
+        .btn-curly {
+            background-color: #800020;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+            .btn-curly:hover {
+                background-color: #a30c3b;
+            }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color:#7a1620;">
-        <div class="container">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                <img src="~/images/logo.png" alt="CurlyQueens Logo" width="40" height="40" class="me-2 rounded-circle" />
-                CurlyQueens
-            </a>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark px-4">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logo.png" alt="CurlyQueens Logo" width="40" height="40" class="me-2 rounded-circle" />
+                    CurlyQueens
+                </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
-                <ul class="navbar-nav mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Product" asp-action="Index">Shop</a>
                         </li>
-                        @if(User.IsInRole("Admin"))
-                    {    
-                    <li class="nav-item">
-                            <a class="nav-link" asp-controller="Product" asp-action="Create">Add Product</a>
-                     </li>
-                    }
+                        @if (User.IsInRole("Admin"))
+                        {
+                         <li class="nav-item">
+                             <a class="nav-link" asp-controller="Product" asp-action="Create">Add Product</a>
+                         </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Home" asp-action="About">About Us</a>
                         </li>
                         <li class="nav-item">
+
                             <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
                         </li>
                     @if (User.Identity.IsAuthenticated)
@@ -63,6 +120,7 @@
 
                 </ul>
             </div>
+
         </div>
     </nav>
 
@@ -79,6 +137,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     @* Render scripts defined in views (fixes the InvalidOperationException) *@
+
+        </nav>
+    </header>
+
+    <main class="container">
+        @RenderBody()
+    </main>
+
+    <footer>
+        <p>
+            &copy; @DateTime.Now.Year <strong>CurlyQueens</strong> | All Rights Reserved 💕
+            <a href="#">Privacy Policy</a> | <a href="#">Terms</a>
+        </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

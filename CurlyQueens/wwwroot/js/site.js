@@ -1,5 +1,3 @@
-﻿// site.js
-
 document.addEventListener('DOMContentLoaded', function () {
 
     // --- Bootstrap 5 Tooltip Initialization ---
@@ -36,6 +34,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target && e.target.matches('.add-to-cart-btn')) {
             e.preventDefault();
 
+    document.body.addEventListener('click', function(e) {
+        if (e.target && e.target.matches('.add-to-cart-btn')) {
+            e.preventDefault();
+            
             // In a real app, you'd get the product ID and quantity, then make an API call.
             // const productId = e.target.dataset.productId;
             // const quantity = 1; 
@@ -65,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (navbarToggler) {
         navbarToggler.addEventListener('click', function () {
+        navbarToggler.addEventListener('click', function() {
             // You could add a class to the icon to change its state, e.g., from a burger to an 'X'
             // This requires custom CSS for the icon states.
             // navbarIcon.classList.toggle('is-active');

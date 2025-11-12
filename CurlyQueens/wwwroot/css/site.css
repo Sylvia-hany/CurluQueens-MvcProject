@@ -249,6 +249,7 @@ a:hover {
     padding: 1.5rem;
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
 }
+<<<<<<< HEAD
 :root {
     --burgundy: #6B0F1A;
     --charcoal: #2E2E33;
@@ -502,3 +503,5 @@ a {
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
 }
 
+=======
+>>>>>>> main
