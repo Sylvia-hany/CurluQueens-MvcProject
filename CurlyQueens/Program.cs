@@ -1,4 +1,5 @@
 using CurlyQueens.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace CurlyQueens
@@ -15,7 +16,8 @@ namespace CurlyQueens
             //for DbContext
             builder.Services.AddDbContext<MyAppdbcontext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                             .AddEntityFrameworkStores<MyAppdbcontext>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
