@@ -1,5 +1,3 @@
-// site.js
-
 document.addEventListener('DOMContentLoaded', function () {
 
     // --- Bootstrap 5 Tooltip Initialization ---
@@ -14,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // This is a placeholder to demonstrate the cart count updating.
     // In a real application, this logic would be driven by AJAX calls to a cart API.
     const miniCartCount = document.getElementById('mini-cart-count');
-    
+
     // Function to be called when an item is added to the cart
     function updateMiniCart(quantity) {
         if (miniCartCount) {
@@ -32,6 +30,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Example of how you might listen for "Add to Cart" clicks
     // This assumes buttons have a class like 'add-to-cart-btn'
+    document.body.addEventListener('click', function (e) {
+        if (e.target && e.target.matches('.add-to-cart-btn')) {
+            e.preventDefault();
+
     document.body.addEventListener('click', function(e) {
         if (e.target && e.target.matches('.add-to-cart-btn')) {
             e.preventDefault();
@@ -64,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const navbarIcon = navbarToggler ? navbarToggler.querySelector('.navbar-toggler-icon') : null;
 
     if (navbarToggler) {
+        navbarToggler.addEventListener('click', function () {
         navbarToggler.addEventListener('click', function() {
             // You could add a class to the icon to change its state, e.g., from a burger to an 'X'
             // This requires custom CSS for the icon states.

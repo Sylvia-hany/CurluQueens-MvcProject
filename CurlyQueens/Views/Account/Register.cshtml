@@ -1,0 +1,87 @@
+﻿@* @model CurlyProducts.ViewModels.RegisterViewModel *@
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .auth-wrapper {
+        min-height: 100vh; /* تغطي كامل الصفحة */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url('/Images/image.webp') no-repeat center center;
+        background-size: cover;
+        position: relative;
+    }
+
+        /* Optional: overlay شفاف لتوضيح النص */
+        .auth-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4); /* 40% شفاف أسود */
+            z-index: 0;
+        }
+
+    .auth-card {
+        position: relative;
+        z-index: 1; /* فوق overlay */
+        background-color: rgba(255,255,255,0.9);
+        border-radius: 15px;
+        padding: 2rem;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+        .auth-card h2 {
+            margin-bottom: 1.5rem;
+        }
+</style>
+<div class="auth-wrapper d-flex justify-content-center align-items-center">
+    <div class="auth-card p-4">
+        <h2 class="text-center mb-3" style="color:#7a1620">إنشاء حساب</h2>
+        <form asp-action="Register" method="post" >
+            <div class="mb-3">
+                <label asp-for="UserName" class="form-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ConfirmPassword" class="form-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary" style="background:#7a1620;border-color:#7a1620">Register</button>
+            </div>
+
+            <div class="mt-3 text-center">
+                Do you have an account?
+                <a href="/Account/Login"> Log in</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

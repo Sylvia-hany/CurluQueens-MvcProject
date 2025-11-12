@@ -1,4 +1,9 @@
+
+﻿
+using AutoMapper;
+
 ﻿using AutoMapper;
+
 using CurlyQueens.Models;
 using CurlyQueens.Services;
 using CurlyQueens.ViewModel;
@@ -44,9 +49,8 @@ namespace CurlyQueens.Controllers
         public async Task<IActionResult> Search(string term)
         {
             var products = await _productService.SearchProductsAsync(term);
-            return View("Index", products);
+            return View("Index",products);
         }
-
         // GET: /Products/Create
         //[Authorize(Roles = "Admin")]
         [HttpGet]
@@ -56,7 +60,7 @@ namespace CurlyQueens.Controllers
         }
 
         // POST: /Product/Create
-       // [Authorize(Roles = "Admin")]
+        [Authorize(Roles ="Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(ProductViewModel model, IFormFile ImageFile)
         {
@@ -87,4 +91,8 @@ namespace CurlyQueens.Controllers
         }
 
     }
+
 }
+
+
+

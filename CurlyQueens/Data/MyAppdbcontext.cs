@@ -1,9 +1,10 @@
 ﻿using CurlyQueens.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CurlyQueens.Data
 {
-    public class MyAppdbcontext: DbContext
+    public class MyAppdbcontext: IdentityDbContext<ApplicationUser>
     {
      
         public MyAppdbcontext(DbContextOptions<MyAppdbcontext> options)
