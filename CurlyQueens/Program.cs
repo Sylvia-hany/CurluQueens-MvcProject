@@ -17,10 +17,26 @@ namespace CurlyQueens
 
             // Repository
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            
             // Service
             builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<ICartService, CartService>();
+            
+            // Add HttpContextAccessor for Session access
+            builder.Services.AddHttpContextAccessor();
+            
+            // Add Session support
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews()
+                .AddNewtonsoftJson(); // ≈÷«›… Newtonsoft.Json
 
             //for DbContext
             builder.Services.AddDbContext<MyAppdbcontext>(options =>
@@ -37,6 +53,9 @@ namespace CurlyQueens
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            // Enable Session - ÌÃ» √‰ ÌﬂÊ‰ ﬁ»· UseAuthorization
+            app.UseSession();
 
             app.UseAuthorization();
 

@@ -1,9 +1,4 @@
-
-﻿
 using AutoMapper;
-
-﻿using AutoMapper;
-
 using CurlyQueens.Models;
 using CurlyQueens.Services;
 using CurlyQueens.ViewModel;
@@ -91,7 +86,6 @@ namespace CurlyQueens.Controllers
         }
 
     }
-
 }
 
 

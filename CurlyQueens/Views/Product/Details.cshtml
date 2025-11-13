@@ -6,16 +6,22 @@
 }
 
 <div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6 text-center">
-            <img src="@Model.ImageUrl" alt="@Model.ProductName" class="img-fluid rounded shadow mb-3" style="max-height:400px;object-fit:cover;" />
-            <h2 style="color:#800020;">@Model.ProductName</h2>
-            <p class="lead">@Model.Description</p>
-            <h4 style="color:#d4af37;">Price: @Model.Price.ToString("C")</h4>
-            <p><strong>Category:</strong> @Model.CategoryName</p>
-            @* <p><strong>Available Stock:</strong> @Model.StockQuantity</p> *@
-
-            <a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>
-        </div>
+    <div id="cart-success-message" class="alert alert-success alert-dismissible fade d-none" role="alert">
+        <i class="fas fa-check-circle"></i> <span id="success-text"></span>
+        <button type="button" class="btn-close" onclick="$('#cart-success-message').removeClass('show').addClass('d-none')"></button>
     </div>
-</div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-5 text-center">
+            <img src="~/Images/@System.IO.Path.GetFileName(@Model.ImageUrl)" 
+                 alt="@Model.ProductName" 
+                 class="img-fluid rounded shadow mb-3" 
+                 onerror="this.src='/Images/default.jpg'"
+                 style="max-height:400px;object-fit:cover;" />
+        </div>
+        <div class="col-md-5">
+            <h2 style="color:#800020;">@Model.ProductName</h2>
+            <p class="lead text-muted">@Model.Description</p>
+            <hr />
+            <h4 style="color:#d4af37;">
+                <i class="fas fa-tag

@@ -1,0 +1,25 @@
+@inject CurlyQueens.Services.ICartService CartService
+
+@{
+    var cartItemCount = CartService.GetCartItemCount();
+}
+
+<li class="nav-item">
+    <a class="nav-link position-relative" asp-controller="Cart" asp-action="Index">
+        <i class="fas fa-shopping-cart"></i> Cart
+        @if (cartItemCount > 0)
+        {
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" 
+                  id="navbar-cart-count" style="font-size:0.7rem;">
+                @cartItemCount
+            </span>
+        }
+        else
+        {
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" 
+                  id="navbar-cart-count" style="font-size:0.7rem;">
+                0
+            </span>
+        }
+    </a>
+</li>

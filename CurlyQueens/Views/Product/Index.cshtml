@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CurlyQueens.ViewModel.ProductViewModel>
+@model IEnumerable<CurlyQueens.ViewModel.ProductViewModel>
 
 @{
     ViewData["Title"] = "Our Curly Products";
@@ -13,20 +13,79 @@
         <button type="submit" class="btn text-white rounded-end" style="background-color:#800020;">Search</button>
     </form>
 
+    <div id="cart-success-message" class="alert alert-success alert-dismissible fade d-none" role="alert">
+        <i class="fas fa-check-circle"></i> <span id="success-text"></span>
+        <button type="button" class="btn-close" onclick="$('#cart-success-message').removeClass('show').addClass('d-none')"></button>
+    </div>
+
     <div class="row">
         @foreach (var item in Model)
         {
             <div class="col-md-4 mb-4">
                 <div class="card shadow-sm border-0" style="border-radius:20px;">
-                    <img src="@item.ImageUrl" class="card-img-top" alt="@item.ProductName" style="height:250px;object-fit:cover;border-top-left-radius:20px;border-top-right-radius:20px;" />
+                    <img src="~/Images/@System.IO.Path.GetFileName(@item.ImageUrl)" 
+                         class="card-img-top" 
+                         alt="@item.ProductName" 
+                         onerror="this.src='/Images/default.jpg'"
+                         style="height:250px;object-fit:cover;border-top-left-radius:20px;border-top-right-radius:20px;" />
                     <div class="card-body text-center" style="background-color:#f2f2f2;">
                         <h5 class="card-title" style="color:#800020;">@item.ProductName</h5>
                         <p class="text-muted">@item.Description</p>
                         <p><strong>@item.Price.ToString("C")</strong></p>
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn text-white" style="background-color:#d4af37;">View Details</a>
+                        <div class="d-flex gap-2 justify-content-center">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn text-white" style="background-color:#d4af37;">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <button class="btn text-white btn-add-to-cart" style="background-color:#800020;" data-product-id="@item.Id">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         }
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('.btn-add-to-cart').click(function() {
+                var button = $(this);
+                var productId = button.data('product-id');
+                
+                button.prop('disabled', true);
+                button.html('<i class="fas fa-spinner fa-spin"></i> Adding...');
+                
+                $.ajax({
+                    url: '@Url.Action("AddToCart", "Cart")',
+                    type: 'POST',
+                    data: { productId: productId, quantity: 1 },
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                    success: function(response) {
+                        if (response.success) {
+                            var badge = $('#navbar-cart-count');
+                            badge.text(response.cartItemCount);
+                            badge.removeClass('d-none');
+                            
+                            $('#success-text').text(response.message);
+                            $('#cart-success-message').removeClass('d-none').addClass('show');
+                            
+                            setTimeout(function() {
+                                $('#cart-success-message').removeClass('show').addClass('d-none');
+                            }, 3000);
+                            
+                            button.prop('disabled', false);
+                            button.html('<i class="fas fa-cart-plus"></i> Add to Cart');
+                        }
+                    },
+                    error: function() {
+                        alert('Error adding product to cart');
+                        button.prop('disabled', false);
+                        button.html('<i class="fas fa-cart-plus"></i> Add to Cart');
+                    }
+                });
+            });
+        });
+    </script>
+}
