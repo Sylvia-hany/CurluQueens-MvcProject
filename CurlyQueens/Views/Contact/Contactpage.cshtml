@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="contact-section py-5 text-center">
+    <div class="container">
+        <h1 class="fw-bold mb-4 animate__animated animate__fadeInDown">Get in Touch 💬</h1>
+        <p class="lead mb-5 animate__animated animate__fadeInUp" style="max-width: 700px; margin:auto;">
+            We'd love to hear from you! Whether you have a question, feedback, or just want to say hi,
+            feel free to reach out to us anytime.
+        </p>
+
+        <form class="contact-form mx-auto text-start shadow p-5 rounded-4 bg-white animate__animated animate__fadeInUp" style="max-width: 600px;">
+            <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Enter your name" />
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter your email" />
+            </div>
+
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" rows="4" class="form-control" placeholder="Write your message..."></textarea>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-curly px-4 py-2 mt-3">Send Message</button>
+            </div>
+        </form>
+
+        <div class="social-icons mt-5 animate__animated animate__fadeInUp animate__delay-1s">
+            <h5 class="mb-3 fw-bold text-muted">Follow us on</h5>
+            <div class="d-flex justify-content-center gap-4 fs-3">
+                <a href="#" class="text-decoration-none text-dark social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-decoration-none text-dark social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-decoration-none text-dark social-icon"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="text-decoration-none text-dark social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/a2e0f5e6b5.js" crossorigin="anonymous"></script>
+
+<style>
+    .contact-section {
+        background: linear-gradient(to bottom right, #ffe6eb, #fff4f6);
+        color: #800020;
+    }
+
+    .contact-form .form-control {
+        border-radius: 8px;
+        border: 1px solid #ddd;
+    }
+
+    .btn-curly {
+        background-color: #800020;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+        .btn-curly:hover {
+            background-color: #a30c3b;
+        }
+
+    .social-icon {
+        color: #800020;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+        .social-icon:hover {
+            color: #a30c3b;
+            transform: scale(1.2);
+        }
+</style>

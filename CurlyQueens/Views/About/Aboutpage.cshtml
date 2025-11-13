@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "About Us";
+}
+
+<div class="about-section text-center py-5">
+    <div class="container">
+        <h1 class="display-5 fw-bold mb-4 animate__animated animate__fadeInDown">About CurlyQueens</h1>
+        <p class="lead mb-5 animate__animated animate__fadeInUp" style="max-width: 800px; margin: auto;">
+            CurlyQueens was born from the love of natural curls 💕.
+            Our mission is to help every curly-haired queen embrace her unique beauty
+            with high-quality, natural, and effective hair care products.
+        </p>
+
+        <div class="row justify-content-center g-4">
+            <div class="col-md-4 animate__animated animate__zoomIn">
+                <div class="card shadow border-0 p-4 rounded-4">
+                    <img src="~/images/about1.jpg" class="card-img-top rounded-4" alt="Curly Hair Care" />
+                    <div class="card-body">
+                        <h5 class="card-title">Our Passion</h5>
+                        <p class="card-text">We’re passionate about creating products that celebrate your curls.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 animate__animated animate__zoomIn animate__delay-1s">
+                <div class="card shadow border-0 p-4 rounded-4">
+                    <img src="~/images/about2.jpg" class="card-img-top rounded-4" alt="Natural Ingredients" />
+                    <div class="card-body">
+                        <h5 class="card-title">Natural Ingredients</h5>
+                        <p class="card-text">We believe that the best curls come from nature’s best ingredients.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<style>
+    .about-section {
+        background: linear-gradient(to bottom right, #fff4f6, #ffe6eb);
+        color: #800020;
+    }
+    .card {
+        transition: transform 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-10px);
+    }
+</style>
